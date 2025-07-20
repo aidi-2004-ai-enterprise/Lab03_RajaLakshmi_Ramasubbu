@@ -1,0 +1,13 @@
+2025-07-20 00:35:22,040 - INFO - Model loaded successfully from app\data\model.json
+2025-07-20 00:36:12,395 - INFO - Model loaded successfully from app\data\model.json
+2025-07-20 00:36:48,436 - INFO - Received input: [{'bill_length_mm': 39.1, 'bill_depth_mm': 18.7, 'flipper_length_mm': 181.0, 'body_mass_g': 3750.0, 'sex': <Sex.Male: 'male'>, 'island': <Island.Torgersen: 'Torgersen'>}]
+2025-07-20 00:38:10,023 - INFO - Model loaded successfully from app\data\model.json
+2025-07-20 00:38:34,176 - INFO - Model loaded successfully from app\data\model.json
+2025-07-20 00:38:44,447 - INFO - Model loaded successfully from app\data\model.json
+2025-07-20 00:39:14,752 - INFO - Received input: [{'bill_length_mm': 39.1, 'bill_depth_mm': 18.7, 'flipper_length_mm': 181.0, 'body_mass_g': 3750.0, 'sex': 'male', 'island': 'Torgersen'}]
+2025-07-20 00:39:14,754 - DEBUG - One-hot encoded columns: ['bill_length_mm', 'bill_depth_mm', 'flipper_length_mm', 'body_mass_g', 'sex_male', 'island_Torgersen']
+2025-07-20 00:39:14,762 - DEBUG - Final input columns: ['sex_male', 'sex_female', 'island_Torgersen', 'island_Biscoe', 'island_Dream']
+2025-07-20 00:39:14,767 - ERROR - Prediction error: feature_names mismatch: ['bill_length_mm', 'bill_depth_mm', 'flipper_length_mm', 'body_mass_g', 'sex_Female', 'sex_Male', 'island_Biscoe', 'island_Dream', 'island_Torgersen'] ['sex_male', 'sex_female', 'island_Torgersen', 'island_Biscoe', 'island_Dream']
+expected bill_length_mm, body_mass_g, bill_depth_mm, sex_Male, sex_Female, flipper_length_mm in input data
+training data did not have the following fields: sex_female, sex_male
+2025-07-20 00:40:42,844 - INFO - Model loaded successfully from app\data\model.json
