@@ -1,6 +1,6 @@
 """
 train.py
-Train XGBoost model on Seaborn Penguins dataset and save model, columns, and label encoder.
+Train XGBoost model on Seaborn Penguins dataset and save model, columns, and label encoder for deployment.
 """
 import pandas as pd
 import seaborn as sns
@@ -13,7 +13,13 @@ import os
 
 def train_and_save_model(model_path: str = "app/data/model.pkl") -> None:
     """
-    Loads, preprocesses, trains, evaluates, and saves the XGBoost model and encoders.
+    Loads the penguins dataset, preprocesses it, trains an XGBoost classifier,
+    evaluates performance, and saves the model, feature columns, and label encoder.
+    
+    Args:
+        model_path (str): File path to save the model and artifacts.
+    Returns:
+        None
     """
     # Load penguins dataset
     df = sns.load_dataset("penguins").dropna()

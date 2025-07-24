@@ -29,7 +29,7 @@ This project demonstrates an end-to-end machine learning workflow: training an X
 2. **Create a virtual environment and install dependencies**
     ```sh
     uv venv
-    uv pip install -r pyproject.toml
+    uv pip install .
     ```
 
 3. **Train the model**
@@ -65,7 +65,7 @@ This project demonstrates an end-to-end machine learning workflow: training an X
 - **Example successful response:**
     ```json
     {
-      "Prediction success": "Adelie"
+      { "species": "Adelie" }
     }
     ```
 

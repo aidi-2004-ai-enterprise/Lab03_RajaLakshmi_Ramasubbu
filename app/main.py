@@ -8,7 +8,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from enum import Enum
 import logging
-from typing import Literal
+from typing import Dict, Any
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -48,10 +48,15 @@ app = FastAPI(
     version="1.0"
 )
 
-@app.post("/predict")
-def predict(features: PenguinFeatures):
+@app.post("/predict", response_model=Dict[str, str])
+def predict(features: PenguinFeatures)-> Dict[str, str]:
     """
-    Predict penguin species from features.
+        Predict the penguin species from the input features.
+
+    Args:
+        features (PenguinFeatures): Input features as a Pydantic model.
+    Returns:
+        dict: Predicted species.
     """
     try:
         # Convert input to DataFrame
@@ -79,11 +84,17 @@ def predict(features: PenguinFeatures):
 
 # Custom error handler for input validation (enum restrictions)
 @app.exception_handler(HTTPException)
-def custom_http_exception_handler(request, exc):
+async def custom_http_exception_handler(request, exc: HTTPException)-> Any:
+    """
+    Custom HTTPException handler that logs details.
+    """
     logger.debug(f"HTTPException: {exc.detail}")
-    return exc
+    return await FastAPI.default_exception_handler(request, exc)
 
 # Root endpoint
-@app.get("/")
-def read_root():
+@app.get("/", response_model=Dict[str, str])
+def read_root()-> Dict[str,str]:
+    """
+    Root endpoint returns a welcome message.
+    """
     return {"message": "Welcome to the Penguin Species Predictor!"}
